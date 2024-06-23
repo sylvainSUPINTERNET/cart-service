@@ -25,7 +25,10 @@ export class AppService {
 
       cartDto.modifiedAt = new Date().toISOString();
 
-      return await client.set(cartDto.uuid, JSON.stringify({ ...cartDto }));
+      // EX for seconds, PX for milliseconds
+      // 10 days
+      await client.set(cartDto.uuid, JSON.stringify({ ...cartDto }), 'EX', 864000);
+      return cartDto;
     } catch (e) {
       console.error(e);
       throw e;
