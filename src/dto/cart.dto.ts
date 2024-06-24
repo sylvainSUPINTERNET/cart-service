@@ -1,7 +1,10 @@
-import { ItemDto } from "./item.dto";
+import { IsArray, IsDateString, IsNotEmpty, IsOptional, IsUUID, ValidateNested, validateOrReject } from 'class-validator';
 
-export class CartDto {
+import { ItemDto } from "./item.dto";
+import { Type } from 'class-transformer';
+
+export interface CartDto {
     uuid: string;
-    items: ItemDto[];
-    modifiedAt: string;
+    items?: ItemDto[];
+    modifiedAt?: string;
 }
